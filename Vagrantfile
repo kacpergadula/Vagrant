@@ -17,6 +17,10 @@ Vagrant.configure("2") do |config|
       git_branch: "master"
     }
   end
+  
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbooks/infrastructure.yml"
+  end
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.galaxy_role_file = 'requirements.yml'
